@@ -41,7 +41,7 @@ const DomoSchema = new mongoose.Schema({
   },
 });
 
-DomoSchema.index({ name: 1, owner: 1}, {unique:true });
+DomoSchema.index({ name: 1, owner: 1 }, { unique: true });
 
 DomoSchema.statics.toAPI = (doc) => ({
   name: doc.name,
@@ -60,9 +60,9 @@ DomoSchema.statics.findByOwner = (ownerId, callback) => {
 DomoSchema.statics.deleteByName = (ownerId, name, callback) => {
   const search = {
     owner: convertId(ownerId),
-    name: name,
+    name,
   };
-  
+
   return DomoModel.remove(search, callback);
 };
 
